@@ -68,7 +68,7 @@ async def censor(message):
   await wh.send(content, username=(author + " (auto-censor)"), avatar_url=ava, allowed_mentions=mention_perms)
   await wh.delete()
 
-@client.command(aliases="set welcome channel")
+@client.command(aliases=["set welcome channel"])
 async def new_welcome_channel(ctx):
   #welcome_channel_id = await ctx.channel.id
   ctx.send("We have got a new welcome channel!")
@@ -87,8 +87,8 @@ async def on_member_join(member,ctx,channel: discord.TextChannel):
   embed.set_footer(text=f"{member.guild}", icon_url=f"{member.guild.icon_url}")
   embed.timestamp = datetime.datetime.utcnow()
   
-  channel = client.get_channel(welcome_channel_id)
-  await channel.send(embed=embed)
+  #channel = client.get_channel(welcome_channel_id)
+  await ctx.send(embed=embed)
 
   
 
